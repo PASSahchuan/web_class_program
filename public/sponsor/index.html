@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我們與原住民的距離 募資平台</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-cookies@1.6.1/vue-cookies.js"></script>
+
+  <style>
+
+    /* Show it is fixed to the top */
+    body {
+      min-height: 75rem;
+      padding-top: 4.5rem;
+    }
+
+    .back-to-top {
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    var user = { id:1, name:'Journal',session:'25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX' };
+      this.$cookies.set('user',user);
+      // print user name
+      console.log(this.$cookies.get('user').name)
+  </script>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">我們與原住民的距離 募資平台</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">首頁<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">更多</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="login.html">申請專案</a>
+            <a class="dropdown-item" href="#">申請規則</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="about.html">關於我們</a>
+          </div>
+        </li>
+      </ul>
+      <a id="login" class="btn btn-outline-light my-2 mr-2 my-sm-0" href="login.html">登入</a>
+      <a id="register" class="btn btn-outline-success my-2 mr-2 my-sm-0" href="register.html">註冊</a>
+      <a id="logout" class="btn btn-outline-success my-2 mr-2 my-sm-0" href="./">登出</a>
+    </div>
+  </nav>
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col-12">
+        <div class="jumbotron">
+          <h1 class="text-center">讓我們與原住民朋友不再有距離</h1>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <p><a class="btn btn-success btn-lg" href="about.html" role="button">關於我們</a> </p>
+            </div>
+            <div class="col-auto">
+              <p><a class="btn btn-primary btn-lg" href="#" role="button">運作原理</a> </p>
+            </div>
+          </div>
+          <p class="text-center">每一份物資都是一份禮物 便捷的募資專案平台.</p>
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="http://www.dmtip.gov.tw/uploads/banner/1_1.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="http://www.dmtip.gov.tw/uploads/banner/4_1.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="http://www.dmtip.gov.tw/uploads/banner/5_1.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="text-center col-md-6 col-12">
+        <h3>申請專案</h3>
+        <p>你想做什麼計畫？實現它需要多少資金？如果在募資期限內達到目標，就能從支持者那裡獲得資金實現物資支援！</p>
+        <a class="btn btn-danger btn-lg" href="login.html" role="button">提案</a>
+      </div>
+      <div class="text-center col-md-6 col-12">
+        <h3>申請規則</h3>
+        <p>我們在乎您提出的專案，因此請您再申請前須閱讀「申請規則」，好讓您的專案能順利通過審查。</p>
+        <a class="btn btn-info btn-lg" href="#" role="button">閱讀規則</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <img class="card-img-top" src="images/pic1.png" alt="募資專案_圖片">
+          <div class="card-body">
+            <h5 class="card-title">募資專案一</h5>
+            <p class="card-text">募資專案一簡介</p>
+            <a href="project.html" class="btn btn-primary">了解專案</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <img class="card-img-top" src="images/pic1.png" alt="募資專案_圖片">
+          <div class="card-body">
+            <h5 class="card-title">募資專案二</h5>
+            <p class="card-text">募資專案二簡介</p>
+            <a href="#" class="btn btn-primary">了解專案</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="container py-sm-4">
+        <div class="row">
+          <div class="col-md-10 my-4 mx-auto">
+            <h2 class="text-center">訂閱型募資</h2>
+            <hr>
+            <div class="row no-gutters my-3">
+              <div class="col-md-4 pr-2">
+                <div class="list-group text-center my-3">
+                  <div class="list-group-item text-white bg-dark">
+                    <h5 class="text-center my-1">一般訂閱</h5>
+                  </div>
+                  <div class="list-group-item text-uppercase font-weight-bold">
+                    NTD $300/MO.
+                  </div>
+                  <a href="#" class="list-group-item">
+                    原住民特色明信片
+                  </a>
+                  <a href="#" class="list-group-item">
+                    原住民手工禮品
+                  </a>
+                  <a href="#" class="list-group-item">
+                    各族活動搶先看
+                  </a>
+                  <a href="#" class="list-group-item">
+                    無廣告觀賞紀錄片
+                  </a>
+                  <div class="list-group-item">
+                    <button class="btn btn-success btn-lg btn-block text-truncate">開始訂閱</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="list-group text-center">
+                  <div class="list-group-item text-white bg-dark">
+                    <h5 class="text-center my-1">高級訂閱<br></h5>
+                  </div>
+                  <div class="list-group-item text-uppercase font-weight-bold">
+                    NTD $1,500/MO.
+                  </div>
+                  <a href="#" class="list-group-item">
+                    募資專案保留名額
+                  </a>
+                  <a href="#" class="list-group-item">
+                    山珍海味原住民美食
+                  </a>
+                  <a href="#" class="list-group-item">
+                    原住民文創商品
+                  </a>
+                  <a href="#" class="list-group-item">
+                    相關活動補助
+                  </a>
+                  <a href="#" class="list-group-item">
+                    瀏覽4K高畫質紀錄片
+                  </a>
+                  <a href="#" class="list-group-item">
+                    免費參與<br>原住民博覽會
+                  </a>
+                  <div class="list-group-item">
+                    <button class="btn btn-success btn-lg btn-block text-truncate">開始訂閱</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 pl-2">
+                <div class="list-group text-center my-3">
+                  <div class="list-group-item text-white bg-dark">
+                    <h5 class="text-center my-1">高級提案用戶</h5>
+                  </div>
+                  <div class="list-group-item text-uppercase font-weight-bold">
+                    Contact Us
+                  </div>
+                  <a href="#" class="list-group-item">
+                    減少專案審核時間
+                  </a>
+                  <a href="#" class="list-group-item">
+                    增加專案上限
+                  </a>
+                  <a href="#" class="list-group-item">
+                    原住民博覽會設攤
+                  </a>
+                  <a href="#" class="list-group-item">
+                    開通高級管理服務
+                  </a>
+                  <div class="list-group-item">
+                    <button class="btn btn-success btn-lg btn-block text-truncate">Contact Us</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-6 mb-md-0 mb-2">
+        <h2>Contact Us</h2>
+        <address>
+          <strong>iOS Club X Hackersir, Inc.</strong><br>
+          白洞<br>
+          西屯區文華路100號<br>
+          台中市<br>
+        </address>
+        <h4>Social</h4>
+        <div class="row">
+          <div class="col-2"><a href="https://iosclub.tw/"><img class="rounded-circle" src="images/head.png" width="32"
+                alt=""></a></div>
+          <div class="col-2"><a href="http://hackersir.org/"><img class="rounded-circle" src="images/小黑.png" width="32"
+                alt=""></a></div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <h2>About Us</h2>
+        <h5>iOS Club</h5>
+        <p>全台第一個蘋果官方認證社團<br>
+          擁有蘋果官方認證師資及教材<br>
+          擁有專屬社辦及教室<br>
+          擁有完善蘋果開發設備<br>
+          每年兩次營隊與海外各校交流<br>
+          希望下一個WWDC受邀者就是你</p>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <h2><br></h2>
+        <h5>Hackersir</h5>
+        <p>推廣各項「資訊安全」與「程式設計」以及相關資訊議題，秉持「創新與實
+          作」的理念，除了推廣資安的基礎概念、程式設計的普及化與開源文化，希望能
+          讓每位社員，甚至是每位學生都能瞭解到資訊安全的重要性以及體驗到更加便利
+          、有趣的未來，並且提升逢甲大學校內學生的資訊安全意識以及增加對各種新事
+          物的好奇心。</p>
+      </div>
+
+    </div>
+  </div>
+  <hr>
+  <footer class="text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p>Copyright © 我的肝. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+        const isLogin = urlParams.get("login");
+        if(isLogin)
+          $('#login, #register').hide()
+        else
+          $('#logout').hide()
+  </script>
+</body>
+
+</html>

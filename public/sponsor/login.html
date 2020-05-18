@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我們與原住民的距離 募資平台</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script> -->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> -->
+
+  <!-- 引入 firestore 函式庫 -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"
+    integrity="sha256-ufGElb3TnOtzl5E4c/qQnZFGP+FYEZj5kbSEdJNrw0A=" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/app.js"></script>
+
+
+  <style>
+    /* Show it is fixed to the top */
+    body {
+      min-height: 75rem;
+      padding-top: 4.5rem;
+    }
+
+    .back-to-top {
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="index.html">我們與原住民的距離 募資平台</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">首頁</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">更多</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="login.html">申請專案</a>
+            <a class="dropdown-item" href="#">申請規則</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="about.html">關於我們</a>
+          </div>
+        </li>
+      </ul>
+      <a class="btn btn-outline-light my-2 mr-2 my-sm-0" href="login.html">登入</a>
+      <a class="btn btn-outline-success my-2 mr-2 my-sm-0" href="register.html">註冊</a>
+    </div>
+  </nav>
+
+
+  <div id="app" class="container">
+    <div class="jumbotron">
+      <h3>登入</h3>
+      <hr>
+
+      <div class="form-group">
+        <label>帳號</label>
+        <input v-model="mail" id="userName" type="text" maxlength="150" autofocus required class="form-control"
+          aria-describedby="usernameHelp">
+      </div>
+
+      <div class="form-group">
+        <label>密碼</label>
+        <input type="password"      
+      id="userPassword" class="form-control" v-model="password" required>
+      </div>
+
+      <div class="form-group">
+        <a href="register.html">還沒有帳號?點我註冊</a>
+      </div>
+
+      <button type="submit" @click="getdata" class="btn btn-primary">登入</button>
+      <div v-show="err_rule">
+        <small id="error-msg" style="color: red;">請勾選同意條款</small>
+    </div>
+    </div>
+  </div>
+</body>
+<script>
+
+
+  // Your web app's Firebase configuration
+  // var firebaseConfig = {
+  //   apiKey: "AIzaSyDjjEsvKhKpKV8ruqTHYynVG15y0aowW1Y",
+  //   authDomain: "meowmeowmeow-d6e86.firebaseapp.com",
+  //   databaseURL: "https://meowmeowmeow-d6e86.firebaseio.com",
+  //   projectId: "meowmeowmeow-d6e86",
+  //   storageBucket: "meowmeowmeow-d6e86.appspot.com",
+  //   messagingSenderId: "546552773194",
+  //   appId: "1:546552773194:web:2d05b71fd61173fb4584b3",
+  //   measurementId: "G-LLE00WG7B4"
+  // };
+  // // Initialize Firebase
+  // firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+
+  // var db = firebase.firestore();
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      mail: '',
+      password: '',
+      err_rule: false
+    },
+    methods: {
+      getdata: function () {
+        window.location.href="/sponsor/?login=true"
+        // var docRef = db.collection("account").doc(this.mail);
+        // docRef.get().then(function (doc) {
+        //   if (doc.exists) {
+        //     console.log();
+        //   } else {
+        //     this.err_rule = true;
+        //   }
+        // })
+        //   .catch(function (error) {
+        //     console.log("提取文件時出錯:", error);
+        //   });
+
+
+      }
+    },
+  });
+
+
+</script>
+
+</html>

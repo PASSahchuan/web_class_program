@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>我們與原住民的距離 募資平台</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+  <!-- 引入 firestore 函式庫 -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"
+    integrity="sha256-ufGElb3TnOtzl5E4c/qQnZFGP+FYEZj5kbSEdJNrw0A=" crossorigin="anonymous"></script>
+
+
+  <style>
+    body {
+      min-height: 75rem;
+      padding-top: 4.5rem;
+    }
+
+    .back-to-top {
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="index.html">我們與原住民的距離 募資平台</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">首頁</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">更多</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="login.html">申請專案</a>
+            <a class="dropdown-item" href="#">申請規則</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="about.html">關於我們</a>
+          </div>
+        </li>
+      </ul>
+      <a class="btn btn-outline-light my-2 mr-2 my-sm-0" href="login.html">登入</a>
+      <a class="btn btn-outline-success my-2 mr-2 my-sm-0" href="register.html">註冊</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>About Us</h2>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <img src="images/head.png" width="250">
+        </div>
+        <div class="col-md-6 text-center">
+          <a class="stretched-link text-decoration-none" href="https://iosclub.tw/"></a>
+          <br><br><br>
+          <h5>iOS Club</h5>
+          <p>全台第一個蘋果官方認證社團<br>
+            擁有蘋果官方認證師資及教材<br>
+            擁有專屬社辦及教室<br>
+            擁有完善蘋果開發設備<br>
+            每年兩次營隊與海外各校交流<br>
+            希望下一個WWDC受邀者就是你</p>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <img src="images/小黑帽.png" width="250">
+        </div>
+        <div class="col-md-6 text-center">
+          <br><br><br>
+          <a class="stretched-link text-decoration-none" href="http://hackersir.org/"></a>
+          <h5>Hackersir</h5>
+          <p>推廣各項「資訊安全」與「程式設計」以及相關資訊議題，秉持「創新與實
+            作」的理念，除了推廣資安的基礎概念、程式設計的普及化與開源文化，希望能
+            讓每位社員，甚至是每位學生都能瞭解到資訊安全的重要性以及體驗到更加便利
+            、有趣的未來，並且提升逢甲大學校內學生的資訊安全意識以及增加對各種新事
+            物的好奇心。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<hr>
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>Copyright © 我的肝. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>

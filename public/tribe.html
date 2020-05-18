@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>tribe</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/app.js"></script>
+
+    <script>
+      let Data;
+      $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get("q");
+        //alert(myParam);
+        getData(myParam).then(data => {
+          Data = data
+          // $(".tribeName").html("myParam");
+          // $(".display-4").html("部落特色");
+          // $(".lead").html(data.features);
+          // console.log()
+          displayNow("tribeFeature")
+        });
+        
+
+      });
+    </script>
+
+    <script>
+      let dispalyTitle;
+      let displayWord;
+      function displayNow(tribe){
+        //alert("id:"+tribe.id)
+        switch(tribe){
+          case "tribeFeature":
+            $(".display-4").html("部落特色"); 
+            $(".lead").html(Data.features);
+            break;
+          case "tribeOrigin":
+            $(".display-4").html("部落由來"); 
+            $(".lead").html(Data.origin);
+            break;
+          case "aboutTribe":
+            $(".display-4").html("關於部落");
+            $(".lead").html(Data.position);
+            $(".my-4").html(Data.trandition);
+            $(".my-5").html(Data.activity);
+            break;
+          case "tribeMore":
+            $(".display-4").html("更多");
+            $(".lead").html(Data.books);
+            $(".my-4").html(Data.web);
+            break;
+          default:
+          }//交通 節慶
+      }
+    </script>
+
+    <style>
+      @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+      .img-responsive {
+        max-width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        overflow: hidden;
+      }
+
+      .img-responsive img {
+        width: 100%;
+      }
+    </style>
+    <style>
+      body {
+        background-color: #cfe3df;
+        font-family: "cwTeXYen", "Comic Sans MS", Arial, sans-serif;
+      }
+    </style>
+    <style>
+      #nav-center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .button {
+        background: none;
+        border-color: #3f6161;
+        color: rgb(221, 221, 255);
+        width: 200px;
+        height: 115px;
+        box-shadow: 2px 2px 10px -4px rgba(0, 0, 0, 0.75);
+        margin: auto;
+        display: block;
+      }
+
+      #tribeOrigin {
+        background-image: url("https://live.staticflickr.com/3475/3754659368_d20cf3e9aa_b.jpg");
+        background-size: 200px;
+      }
+
+      #aboutTribe {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlxIDjmrURC2tMxCEee44wMi-uzwmEkm_jrJ-i7uFXPswcMapH&s");
+        background-size: 200px;
+      }
+
+      #tribeFeature {
+        background-image: url("https://image.cdn-eztravel.com.tw/wWiBwXNceH30OqTTgG2UxUZrkpyXt6JpugIeXFeGWmM/g:ce/aHR0cHM6Ly93d3cuZXp0cmF2ZWwuY29tLnR3L3BvaS90dy9IU1ovUWFsYW5nIFNtYW5ndXMvSU1HXzMwOTEuSlBH.jpg");
+        background-size: 200px;
+      }
+
+      #tribeMore {
+        background-image: url("https://imgur.dcard.tw/N7dq8Ez.jpg");
+        background-size: 200px;
+      }
+
+      /* .jumbotron {
+        width: 70%;
+        margin: auto;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-expand-lg">
+      <a class="navbar-brand mx-auto" href="index.html" style="color: #3f6161;"
+        ><h2>我們與山地部落的距離</h2></a
+      >
+      <p><h2 class="tribeName"></h2></p>
+      <!-- <div id="nav">
+        <div id="nav-center">
+          <a class="nav-link" href="index.html" style="color: #3f6161;">
+            <h2>我們與山地部落的距離</h2>
+          </a>
+        </div>
+      </div> -->
+    </nav>
+
+    <div class="container" margin:auto>
+      <div class="row">
+        <div class="col">
+          <div
+            id="carouselExampleIndicators"
+            class="mx-auto carousel slide carousel-fade"
+            data-ride="carousel"
+            data-interval="2000"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="1"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="2"
+              ></li>
+            </ol>
+            <div class="carousel-inner img-responsive">
+              <div class="carousel-item active">
+                <img
+                  src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/09/06/1/6784243.jpg&x=0&y=0&sw=0&sh=0&exp=3600"
+                  class="d-block w-100"
+                  alt="img-1"
+                />
+                <div
+                  class="carousel-caption d-none d-md-block"
+                  style="color: #eac100;"
+                >
+                  <h5>上帝部落</h5>
+                  <p>司馬庫斯</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://img.ltn.com.tw/Upload/liveNews/BigPic/600_2348690_10.jpg"
+                  class="d-block w-100"
+                  alt="img-2"
+                />
+                <div
+                  class="carousel-caption d-none d-md-block"
+                  style="color: #eac100;"
+                >
+                  <h5>雲上部落</h5>
+                  <p>櫻花怒放 宛如人間仙境</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="http://farm4.staticflickr.com/3783/9706816805_0e0127079c_o.jpg"
+                  class="d-block w-100"
+                  alt="img-3"
+                />
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="col">
+        <table class="table table-borderless">
+          <thead></thead>
+          <tbody>
+            <div>
+                <div class="row">
+                  <td>
+                    <button class="button" id="tribeFeature" onclick="displayNow(this.id)">
+                      <br /><br />部落特色
+                    </button>
+                  </td>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <td>
+                      <button class="button" id="tribeOrigin" onclick="displayNow(this.id)">
+                        <br /><br />部落由來
+                      </button>
+                    </td>
+                  </div>
+                <div class="row">
+                  <td>
+                    <button class="button" id="aboutTribe" onclick="displayNow(this.id)">
+                      <br /><br />關於我們
+                    </button>
+                  </td>
+                </div>
+                
+                <div class="row">
+                  <td>
+                    <button class="button" id="tribeMore" onclick="displayNow(this.id)">
+                      <br /><br />我想更了解
+                    </button>
+                  </td>
+                </div>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-11">
+          <div class="jumbotron shadow mb-3">
+            <h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <p class="my-4" id="lead-2"></p>
+            <p class="my-5" id="lead-3"></p>
+            <!-- <p class="lead">
+              <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </p> -->
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </body>
+</html>

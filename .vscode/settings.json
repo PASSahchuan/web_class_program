@@ -1,0 +1,12 @@
+{
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    /*alvin*/
+    "eslint.options": {
+        "plugins":["html"]
+    },
+    "eslint.validate": [
+        "javascript",
+        "html"
+    ]
+}

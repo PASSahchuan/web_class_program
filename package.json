@@ -1,0 +1,39 @@
+{
+  "name": "node_sample",
+  "version": "1.0.0",
+  "description": "sample",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "watch": "pm2 start bin/www --no-daemon --no-autorestart --watch --ignore-watch='node_modules'",
+    "test": "echo Done.",
+    "htmlhint": "htmlhint .",
+    "stylelint": "stylelint **/*.{html,css}"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "eslint": "*",
+    "eslint-config-airbnb": "*",
+    "eslint-config-airbnb-base": "*",
+    "eslint-plugin-html": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "express": "~4.16.1",
+    "firebase": "^7.6.1",
+    "htmlhint": "*",
+    "mocha": "^6.0.2",
+    "mongo": "^0.1.0",
+    "morgan": "~1.9.1",
+    "npm": "*",
+    "pm2": "^4.2.1",
+    "selenium-webdriver": "*",
+    "stylelint": "*",
+    "stylelint-config-standard": "*",
+    "vue-cookies": "^1.6.1"
+  },
+  "devDependencies": {}
+}
